@@ -1,20 +1,4 @@
 @charset "UTF-8";
-/*!
-
-=========================================================
-* Now UI Dashboard PRO React - v1.3.0 based on Now UI Dashboard PRO - v1.4.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/now-ui-dashboard-pro-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 /*     brand Colors              */
 /*      light colors         */
 .btn,
@@ -13254,20 +13238,6 @@ button.rbc-input::-moz-focus-inner {
   min-height: auto;
   height: auto; }
 
-/*!
-
-=========================================================
-* React Wizard - v0.0.5
-=========================================================
-
-* Copyright 2017 Creative Tim (http://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/react-wizard/blob/master/LICENSE.md)
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 .wizard-container .card-wizard {
   min-height: 410px;
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
@@ -14313,16 +14283,6 @@ td.rdtYear:hover {
       background-color: #f96332 !important;
       color: #ffffff; }
 
-/**
-* React Select v1.0.0-rc.10
-* ============
-* Created by Jed Watson and Joss Mackison for KeystoneJS, https://www.keystonejs.com/
-* https://twitter.com/jedwatson https://twitter.com/jossmackison https://twitter.com/keystonejs
-* MIT License: https://github.com/JedWatson/react-select
-*/
-/*
-This file was modified entirely by Creative Tim for React-Select v2.0.0
-*/
 .react-select .react-select__menu {
   top: 105%;
   max-width: 94%;
