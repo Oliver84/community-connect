@@ -1,19 +1,3 @@
-/*!
-
-=========================================================
-* Now UI Dashboard PRO React - v1.3.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/now-ui-dashboard-pro-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 /*eslint-disable*/
 import React from "react";
 // react component used to create a calendar with events on it
@@ -28,8 +12,10 @@ import { Card, CardBody, Row, Col } from "reactstrap";
 
 // core components
 import PanelHeader from "components/PanelHeader/PanelHeader.jsx";
+import Iframe from 'react-iframe';
 
 import { events } from "variables/general.jsx";
+import './Newsletter.css';
 
 const localizer = BigCalendar.momentLocalizer(moment);
 
@@ -90,7 +76,7 @@ class Calendar extends React.Component {
   render() {
     return (
       <>
-        <PanelHeader
+        {/* <PanelHeader
           content={
             <div className="header text-center">
               <h2 className="title">React Big Calendar</h2>
@@ -109,28 +95,9 @@ class Calendar extends React.Component {
               </p>
             </div>
           }
-        />
+        /> */}
         <div className="content">
-          {this.state.alert}
-          <Row>
-            <Col xs={12} md={10} className="ml-auto mr-auto">
-              <Card className="card-calendar">
-                <CardBody>
-                  <BigCalendar
-                    selectable
-                    localizer={localizer}
-                    events={this.state.events}
-                    defaultView="month"
-                    scrollToTime={new Date(1970, 1, 1, 6)}
-                    defaultDate={new Date()}
-                    onSelectEvent={event => this.selectedEvent(event)}
-                    onSelectSlot={slotInfo => this.addNewEventAlert(slotInfo)}
-                    eventPropGetter={this.eventColors}
-                  />
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
+          <Iframe url="http://192.168.254.18:8080" className="newsletter" />
         </div>
       </>
     );

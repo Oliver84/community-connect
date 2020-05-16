@@ -1,0 +1,8 @@
+.main-panel > .content {
+  padding: 0;
+}
+.newsletter {
+  width: 100vw;
+  height: 100vh;
+  padding-top: 2rem;
+}
