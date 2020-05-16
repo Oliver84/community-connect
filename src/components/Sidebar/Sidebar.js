@@ -70,7 +70,7 @@ const Sidebar = props => {
   }
   // this function creates the links and collapses that appear in the sidebar (left menu)
   const createLinks = routes => {
-    return routes.map((prop, key) => {
+    return routes.filter(prop => prop.layout !== '/auth').map((prop, key) => {
       if (prop.collapse) {
         var st = {};
         st[prop["state"]] = !collapsedStates[prop.state];

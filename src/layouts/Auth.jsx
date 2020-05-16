@@ -65,6 +65,7 @@ class Auth extends React.Component {
     this.setState({ filterColor: color });
   };
   render() {
+    console.log(this.getRoutes(routes))
     return (
       <>
         <AuthNavbar {...this.props} />
