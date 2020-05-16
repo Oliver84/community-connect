@@ -93,19 +93,9 @@ class Calendar extends React.Component {
         <PanelHeader
           content={
             <div className="header text-center">
-              <h2 className="title">React Big Calendar</h2>
+              <h2 className="title">Community Calendar</h2>
               <p className="category">
-                A beautiful react component made by{" "}
-                <a href="https://github.com/intljusticemission" target="_blank">
-                  International Justice Mission
-                </a>
-                . Please checkout their{" "}
-                <a
-                  href="https://github.com/intljusticemission/react-big-calendar"
-                  target="_blank"
-                >
-                  full documentation.
-                </a>
+                View upcoming events, clubhouse rentals, and important dates!
               </p>
             </div>
           }

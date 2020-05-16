@@ -1,19 +1,3 @@
-/*!
-
-=========================================================
-* Now UI Dashboard PRO React - v1.3.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/now-ui-dashboard-pro-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 /*eslint-disable*/
 import React from "react";
 // react component used to create a calendar with events on it
@@ -30,10 +14,12 @@ import { Card, CardBody, Row, Col } from "reactstrap";
 import PanelHeader from "components/PanelHeader/PanelHeader.jsx";
 
 import { events } from "variables/general.jsx";
+import Document from '../../assets/img/document.png'
+import './Documents.css';
 
 const localizer = BigCalendar.momentLocalizer(moment);
 
-class Calendar extends React.Component {
+class Documents extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -93,19 +79,9 @@ class Calendar extends React.Component {
         <PanelHeader
           content={
             <div className="header text-center">
-              <h2 className="title">React Big Calendar</h2>
+              <h2 className="title">Document Portal</h2>
               <p className="category">
-                A beautiful react component made by{" "}
-                <a href="https://github.com/intljusticemission" target="_blank">
-                  International Justice Mission
-                </a>
-                . Please checkout their{" "}
-                <a
-                  href="https://github.com/intljusticemission/react-big-calendar"
-                  target="_blank"
-                >
-                  full documentation.
-                </a>
+                Community guidelines and By-Laws
               </p>
             </div>
           }
@@ -114,19 +90,32 @@ class Calendar extends React.Component {
           {this.state.alert}
           <Row>
             <Col xs={12} md={10} className="ml-auto mr-auto">
-              <Card className="card-calendar">
+              <Card className="card-documents-panel">
                 <CardBody>
-                  <BigCalendar
-                    selectable
-                    localizer={localizer}
-                    events={this.state.events}
-                    defaultView="month"
-                    scrollToTime={new Date(1970, 1, 1, 6)}
-                    defaultDate={new Date()}
-                    onSelectEvent={event => this.selectedEvent(event)}
-                    onSelectSlot={slotInfo => this.addNewEventAlert(slotInfo)}
-                    eventPropGetter={this.eventColors}
-                  />
+                <Card className="card-document">
+                  <CardBody>
+                    <img src={Document} />
+                    Document 1
+                  </CardBody>
+                </Card>
+                <Card className="card-document">
+                  <CardBody>
+                    <img src={Document} />
+                    Document 2
+                  </CardBody>
+                </Card>
+                <Card className="card-document">
+                  <CardBody>
+                    <img src={Document} />
+                    Document 3
+                  </CardBody>
+                </Card>
+                <Card className="card-document">
+                  <CardBody>
+                    <img src={Document} />
+                    Document 4
+                  </CardBody>
+                </Card>
                 </CardBody>
               </Card>
             </Col>
@@ -137,4 +126,4 @@ class Calendar extends React.Component {
   }
 }
 
-export default Calendar;
+export default Documents;
