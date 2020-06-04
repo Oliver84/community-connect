@@ -1,30 +1,25 @@
 /*eslint-disable*/
-import React from "react";
-// react component used to create a calendar with events on it
-import BigCalendar from "react-big-calendar";
-// dependency plugin for react-big-calendar
-import moment from "moment";
+import React from 'react';
 // react component used to create alerts
-import SweetAlert from "react-bootstrap-sweetalert";
+import SweetAlert from 'react-bootstrap-sweetalert';
 
-// reactstrap components
-import { Card, CardBody, Row, Col } from "reactstrap";
+import { events } from 'variables/general.jsx';
+import CKEditor from '@ckeditor/ckeditor5-react';
+import CustomEditor from 'ckeditor5-custom-build/build/ckeditor';
+import PanelHeader from 'components/PanelHeader/PanelHeader.jsx';
+import { Button, Container } from "reactstrap";
+import sampleData from './sampleData';
 
-// core components
-import PanelHeader from "components/PanelHeader/PanelHeader.jsx";
-import Iframe from 'react-iframe';
 
-import { events } from "variables/general.jsx";
 import './Newsletter.css';
 
-const localizer = BigCalendar.momentLocalizer(moment);
-
-class Calendar extends React.Component {
+class Newsletter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       events: events,
-      alert: null
+      alert: null,
+      readOnly: true,
     };
     this.hideAlert = this.hideAlert.bind(this);
   }
@@ -37,14 +32,14 @@ class Calendar extends React.Component {
         <SweetAlert
           input
           showCancel
-          style={{ display: "block", marginTop: "-100px" }}
+          style={{ display: 'block', marginTop: '-100px' }}
           title="Input something"
-          onConfirm={e => this.addNewEvent(e, slotInfo)}
+          onConfirm={(e) => this.addNewEvent(e, slotInfo)}
           onCancel={() => this.hideAlert()}
           confirmBtnBsStyle="info"
           cancelBtnBsStyle="danger"
         />
-      )
+      ),
     });
   }
   addNewEvent(e, slotInfo) {
@@ -52,56 +47,105 @@ class Calendar extends React.Component {
     newEvents.push({
       title: e,
       start: slotInfo.start,
-      end: slotInfo.end
+      end: slotInfo.end,
     });
     this.setState({
       alert: null,
-      events: newEvents
+      events: newEvents,
     });
   }
   hideAlert() {
     this.setState({
-      alert: null
+      alert: null,
     });
   }
   eventColors(event, start, end, isSelected) {
-    var backgroundColor = "event-";
+    var backgroundColor = 'event-';
     event.color
       ? (backgroundColor = backgroundColor + event.color)
-      : (backgroundColor = backgroundColor + "default");
+      : (backgroundColor = backgroundColor + 'default');
     return {
-      className: backgroundColor
+      className: backgroundColor,
     };
   }
+  toggleEdit = () => {
+    this.setState({
+      readOnly: !this.state.readOnly
+    })
+  }
+
   render() {
+    const options = {};
     return (
       <>
-        {/* <PanelHeader
+        <PanelHeader
           content={
             <div className="header text-center">
-              <h2 className="title">React Big Calendar</h2>
-              <p className="category">
-                A beautiful react component made by{" "}
-                <a href="https://github.com/intljusticemission" target="_blank">
-                  International Justice Mission
-                </a>
-                . Please checkout their{" "}
-                <a
-                  href="https://github.com/intljusticemission/react-big-calendar"
-                  target="_blank"
-                >
-                  full documentation.
-                </a>
-              </p>
+              <h2 className="title">Newsletter</h2>
+              <p className="category">Community news</p>
             </div>
           }
-        /> */}
-        <div className="content">
-          <Iframe url="http://192.168.254.18:8080" className="newsletter" />
-        </div>
+        />
+        <Container>
+        {/* <Button color="primary" onClick={this.toggleEdit}>{this.readOnly ? 'Save' : 'Edit'}</Button> */}
+        <CKEditor
+          editor={CustomEditor}
+          data={sampleData}
+          onInit={(editor) => {
+            // You can store the "editor" and use when it is needed.
+            console.log('Editor is ready to use!', editor);
+          }}
+          config={{
+            toolbar: {
+              items: [
+                'undo',
+                'redo',
+                'heading',
+                '|',
+                'bold',
+                'italic',
+                'link',
+                'bulletedList',
+                'numberedList',
+                '|',
+                'indent',
+                'alignment',
+                'outdent',
+                '|',
+                'imageUpload',
+                'blockQuote',
+                'insertTable',
+                'mediaEmbed',
+              ],
+            },
+            language: 'en',
+            image: {
+              toolbar: [
+                'imageTextAlternative',
+                'imageStyle:full',
+                'imageStyle:side',
+              ],
+            },
+            table: {
+              contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells'],
+            },
+          }}
+          onChange={(event, editor) => {
+            const data = editor.getData();
+            console.log({ event, editor, data });
+          }}
+          // onBlur={ ( event, editor ) => {
+          //     console.log( 'Blur.', editor );
+          // } }
+          // onFocus={ ( event, editor ) => {
+          //     console.log( 'Focus.', editor );
+          // } }
+          disabled={false}
+        />
+        </Container>
       </>
     );
   }
 }
 
-export default Calendar;
+export default Newsletter;

@@ -6,3 +6,7 @@
   height: 100vh;
   padding-top: 2rem;
 }
+
+.ck.ck-content {
+  background-color: white;
+}
